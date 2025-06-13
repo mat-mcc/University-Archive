@@ -1,0 +1,8 @@
+READ a
+LOADI r1 #2
+LOAD r2 a
+LOADI r3 #1
+AND r4 r2 r3
+ADD r5 r1 r4
+STORE f r5
+WRITE f
