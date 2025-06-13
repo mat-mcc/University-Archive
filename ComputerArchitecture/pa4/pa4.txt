@@ -1,0 +1,188 @@
+Bomb lab assignment notes/examples/commands:
+
+Live Demo:
+
+Break Points on explode bomb!!!!
+objdump -dx bomb > my-bomb.txt
+
+
+gdb commands:
+gdb ./bomb 
+r (run)
+ni (next instruction)
+break*0x... (break at address)
+continue (go from now to next breakpoint)
+print $eax (print value of eax)
+p $rsp+4 (compute effective address);
+print *( (int *) $4)    read variable $4 as as an int (cannot deferecne void*)
+
+info break (get all breakpoints)
+disable 3 (disable breakpoint)
+
+
+FIRST: 
+break explode_bomb
+break phase_1
+
+give test imput:
+
+disassemble phase_1:
+    look for __isoc99_sscanf or something similar, which is where input is taken
+    %eax is the value of the return; (rax)
+    scanf return value is the number of arguments read
+    can step through instructions
+    add breaks to lines or addresses
+    break*0x0000555555556692
+    continue to breakpoints:
+        check values of registers
+
+
+
+928!!!
+
+
+PHASE 2:
+
+End of assembler dump.
+(gdb) p $rsi
+$10 = 93824992248232
+(gdb) p ((char) $10)
+$11 = -88 '\250'
+(gdb) p ((char*) $10)
+$12 = 0x5555555581a8 "Yo ho yo ho, a pirate's life for me."
+
+Phase 4: Reading 6 numbers?
+
+Taking the last value input into read_six_numbers?
+read_six_numbers reads six numbers from input line:
+
+first value should be equal to 4!!
+
+loading last value into rbp after call back in phase_4
+
+second value should be 8!!
+
+third value is 16:
+
+6th value should equal 140737488346660!
+-8672
+
+solution: 4 8 16 32 64 128
+
+
+PHASE 5:
+
+requires 2 inputs
+
+first input is <= 14?
+
+first input must be 7
+
+fun 5 returns if first input is 7:
+returns 7?
+second input also 7:
+
+SOLUTION 7 7
+
+phase 6:
+takes two inputs:
+
+%d %d
+
+first input: cannot be 15
+less than 15,
+FIRST INPUT IS 8
+
+
+first input will be the eax at +58
+ecx and edx set to zero
+load 9 into rsi +73
+
+eax must be 6 to add to 9 to get 15 at +90
+
+first input is 16?
+iterates through first loop (+93) but is 1 short for +105 
+
+SECOND INPUT 97
+
+
+Phase 7:
++264 comparing 5 to first value-1?:
+
++90 eax is second value:
++90 iterates though other input values and 
+compares them to rbp (first value)
+SHOULD NOT BE EQUAL
++95 comparing 3rd value to 
+
+iterates through all until ebx is greater than 5:
+jump to +247:
+
+r15 = r15 +1
+r14 = r14+4
+rbp = r14
+eax is second input -1
+nneds to be less than 5
+second value less than 15
+
+
+1 2 3 4 5 6
+
+     rsi, r12, and r13 point to beginning of array
++255 rbp point to beginning
++283 rbx is 1?
+
++77 - +98:
++95 all values must not be equal to first input?
+jump to +247
+
++247 - +267:
+sets r14 to next value with pointer
+add 1 to r15
+
++102 5th input compared to 19th input
+
+
+node 5: 992 0x000003e0
+node 6: 522 0x0000020a
+node 4: 569 0x00000239
+node 3: 53  0x00000035
+node 1: 485 0x000001e5
+node 2: 458 0x000001ca
+
+0x55555555b630 <node1>:	0x000001e5	0x00000001	0x5555b640 || 485
+0x55555555b640 <node2>:	0x000001ca	0x00000002	0x5555b650 || 458
+0x55555555b650 <node3>:	0x00000035	0x00000003	0x5555b660 || 53
+0x55555555b660 <node4>:	0x00000239	0x00000004	0x5555b670 || 569
+0x55555555b670 <node5>:	0x000003e0	0x00000005	0x5555b120 || 992
+0x55555555b120 <node6>:	0x0000020a	0x00000006	0x00000000 || 522
+
+
+L - S 
+5 4 6 1 2 3
+
+
+
+2 3 1 6 5 4
+
+
+Phase 8:
+
+%d %c %d
+
+num char num
+
+3 inputs
+
++56 first num below 7
++67 eax now first num
+notrack jump to +282
+second num equal 976
+
+6 _ 976
+
+
+
+phase 9:
+
+anything above 1004
